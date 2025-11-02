@@ -155,9 +155,9 @@
                     --- REPOSITORY DIRECTORY LISTING (${repos.length} objects) ---
                 </div>
                 <div class="text-gray-500 text-xs mb-2 hidden sm:block">
+                    <!-- Adjusted column headers: Removed STARS -->
                     <span class="w-24 inline-block">LAST UPDATED</span>
-                    <span class="ml-4 w-20 inline-block">LANGUAGE</span>
-                    <span class="ml-4 w-12 inline-block">STARS</span>
+                    <span class="ml-4 w-32 inline-block">LANGUAGE</span>
                     <span class="ml-4">REPOSITORY NAME</span>
                 </div>
             `;
@@ -165,7 +165,6 @@
             repos.forEach(repo => {
                 const lastUpdated = formatTime(repo.updated_at);
                 const language = repo.language || 'Shell';
-                const stars = repo.stargazers_count;
                 const fork = repo.fork ? ' (FORK)' : '';
 
                 // Terminal-style output line
@@ -175,8 +174,9 @@
                         <!-- Primary Data Row -->
                         <div class="flex flex-wrap items-baseline">
                             <span class="text-pink-400 w-full sm:w-24 sm:inline-block">${lastUpdated}</span>
-                            <span class="text-yellow-400 sm:ml-4 w-20 sm:inline-block">${language.padEnd(8)}</span>
-                            <span class="text-green-400 sm:ml-4 w-12 sm:inline-block">★${stars}</span>
+                            <!-- Adjusted width from w-20 to w-32 to fill the space -->
+                            <span class="text-yellow-400 sm:ml-4 w-32 sm:inline-block">${language.padEnd(8)}</span>
+                            <!-- Removed STARS column -->
                             <span class="text-cyan-300 sm:ml-4 flex-1 group-hover:underline font-bold">
                                 ${repo.name}
                                 <span class="text-gray-500 text-xs font-normal">${fork}</span>
